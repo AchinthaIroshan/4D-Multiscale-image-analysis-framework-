@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Oct 14 11:39:06 2020
+@author: Achintha I. Kondarage
+@Project: Sintering of Bioactive glasses
 
-@author: achin
+Set of functions to classify image slices which include VOIs
+
 """
 
 from pathlib import Path
@@ -25,16 +26,6 @@ def load_image_files(container_path, dimension=(64, 64)):
     Load image files with categories as subfolder names 
     which performs like scikit-learn sample dataset
     
-    Parameters
-    ----------
-    container_path : string or unicode
-        Path to the main folder holding one subfolder per category
-    dimension : tuple
-        size to which image are adjusted to
-        
-    Returns
-    -------
-    Bunch
     """
     image_dir = Path(container_path)
     folders = [directory for directory in image_dir.iterdir() if directory.is_dir()]
@@ -64,6 +55,11 @@ def load_image_files(container_path, dimension=(64, 64)):
 
 
 def trainSVM():
+
+    """
+    train a support vector classifier to classify images based on reduced voxel values.
+    
+    """
     image_dataset = load_image_files("Images/")
     X_train, X_test, y_train, y_test = train_test_split(
     image_dataset.data, image_dataset.target, test_size=0.3,random_state=109)
@@ -81,6 +77,14 @@ def trainSVM():
     
 
 def strutslicer(image_read_path,image_write_path):
+
+ 
+    """
+    Classify slices in a 3D image : slices with VOIs and slices without VOIS
+    Replace slices without VOI with a black coloured image slice.
+  
+    """
+    
     data,header = nrrd.read(Path(image_read_path))
     image = data.T
     features = []
@@ -109,6 +113,12 @@ def strutslicer(image_read_path,image_write_path):
 
 
 def strutslice_selector(image_read_path):
+
+    """
+    Classify slices in a 3D image
+
+    """
+
     data,header = nrrd.read(Path(image_read_path))
     image = data.T
     features = []
@@ -123,7 +133,13 @@ def strutslice_selector(image_read_path):
     
 #trainSVM()  
 def run_strut_slicer():
-    
+
+
+    """
+    Execution of fuctions to remove image slices without VOIs based on a support vector machine classifier.
+
+    """
+
     trainSVM()
     #folder_in = "/media/aik19/Seagate Backup Plus Drive/Sintering_ICIE16_printed_Vf/Resampled/Stage3/ph2/"
     folder_in = "C:/PhD/Sintering Analysis/Anlaysing Shrinkage/segmented_nrrd/"
