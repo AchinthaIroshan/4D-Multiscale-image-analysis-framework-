@@ -1,6 +1,2 @@
 # 4D Multiscale Image Analysis framework to characterize 3D printed scaffolds using Micro-CT imaging
-Image Analysis Framework to follow sintering of porous bioceramics in 4D
-
-
-The Image Analysis Framework facilitate analysing sintering of 3D printed porous bioceramics using in-situ 4D imaging. 
-The framework include preprocessing, Tracking Volumes of Interests(VOIs), Segmentation and quantitative analysis.
+This image analysis framework was developed to characterize 3D-printed bioactive and hybrid scaffolds using micro-CT. The proposed framework facilitates micro-CT image preprocessing, image segmentation, classification, Volume of Interest (VOI) detection, VOI tracking, and quantitative analysis components.
