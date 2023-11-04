@@ -1,4 +1,4 @@
-# Sintering
+# 4D Multiscale Image Analysis framework to characterize 3D printed scaffolds using Micro-CT imaging
 Image Analysis Framework to follow sintering of porous bioceramics in 4D
 
 
